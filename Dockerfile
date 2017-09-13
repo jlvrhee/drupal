@@ -1,5 +1,6 @@
 # from https://www.drupal.org/requirements/php#drupalversions
 FROM php:5-apache
+MAINTAINER Jeroen van Rhee <jeroen_van_rhee@hotmail.com>
 
 RUN a2enmod rewrite
 
