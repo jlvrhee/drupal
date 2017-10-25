@@ -23,7 +23,17 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y openssh-client
 
 # Give shell to www-data user (which runs apache processes)
-RUN usermod -s /bin/bash www-data
+RUN usermod -s /bin/bash www-data && \
+           mkdir -p /var/www/.ssh && \
+           chmod 700 /var/www/.ssh && \
+           chown www-data:www-data /var/www/.ssh
+
+ADD ssh/* /var/www/.ssh
+
+RUN chmod 600 /var/www/.ssh/id_rsa && \
+           chmod 644 /var/www/.ssh/id_rsa.pub && \
+           chmod 600 /var/www/.ssh/config && \
+           chown www-data:www-data /var/www/.ssh/*
 
 # https://www.drupal.org/node/3060/release
 ENV DRUPAL_VERSION 7.56
