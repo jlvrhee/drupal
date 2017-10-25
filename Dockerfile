@@ -4,9 +4,9 @@ MAINTAINER Jeroen van Rhee <jeroen_van_rhee@hotmail.com>
 
 RUN a2enmod rewrite
 
-# install the PHP extensions we need
+# install the PHP extensions and SSH client we need
 RUN set -ex \
-	&& buildDeps='libjpeg62-turbo-dev libpng12-dev libpq-dev libxml2-dev' \
+	&& buildDeps='libjpeg62-turbo-dev libpng12-dev libpq-dev libxml2-dev openssh-client' \
 	&& apt-get update && apt-get install -y --no-install-recommends $buildDeps && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-jpeg-dir=/usr --with-png-dir=/usr \
 	&& docker-php-ext-install -j "$(nproc)" gd mbstring mysql mysqli pdo pdo_mysql pdo_pgsql xml zip \
