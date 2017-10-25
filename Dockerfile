@@ -19,6 +19,9 @@ RUN set -ex \
 
 WORKDIR /var/www/html
 
+# Give shell to www-data user (which runs apache processes)
+RUN usermod -s /bin/bash www-data
+
 # https://www.drupal.org/node/3060/release
 ENV DRUPAL_VERSION 7.56
 ENV DRUPAL_MD5 5d198f40f0f1cbf9cdf1bf3de842e534
