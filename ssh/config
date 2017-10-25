@@ -1,0 +1,4 @@
+Host *
+    PasswordAuthentication  no
+    StrictHostKeyChecking   no
+    UserKnownHostsFile      /dev/null
