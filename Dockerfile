@@ -28,7 +28,7 @@ RUN usermod -s /bin/bash www-data && \
            chmod 700 /var/www/.ssh && \
            chown www-data:www-data /var/www/.ssh
 
-ADD ssh/* /var/www/.ssh
+ADD ssh /var/www/.ssh
 
 RUN chmod 600 /var/www/.ssh/id_rsa && \
            chmod 644 /var/www/.ssh/id_rsa.pub && \
